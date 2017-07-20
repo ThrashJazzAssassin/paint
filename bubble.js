@@ -7,49 +7,45 @@ function Bubble(x, y, radius, r, g, b) {
     this.b = Cpanel.Colour[2] + random(-this.rand, this.rand);
     this.radius = Cpanel.Radius;
     this.strokeWeight = Cpanel.Outline;
-    this.splatter = Cpanel.Splatter;
+    this.splatter = Cpanel.Splatter ** 2;
+}
+Bubble.prototype.updateVars = function () {
+    this.rand = Cpanel.Randomness;
+    this.reproduction = Cpanel.Reproduction;
+    this.opacity = Cpanel.Clarity;
+    this.wind = Cpanel.Wind;
+    this.gravity = -Cpanel.Gravity;
 
-    this.randomiseColours = function () {
-        this.r = constrain(this.r + random(-this.rand, this.rand), 0, 255);
-        this.g = constrain(this.g + random(-this.rand, this.rand), 0, 255);
-        this.b = constrain(this.b + random(-this.rand, this.rand), 0, 255);
-    }
+    if (Cpanel.Splatter > 0) {
+        this.splatter = (this.radius / 100) * Cpanel.Splatter ** 2;
+    } else {
+        this.splatter = Cpanel.Splatter ** 2;
 
-    this.updateVars = function () {
-        this.rand = Cpanel.Randomness;
-        // this.r = random(Cpanel.sliders.Red.value() - this.rand, Cpanel.sliders.Red.value() + this.rand);
-        // this.g = random(Cpanel.sliders.Green.value() - this.rand, Cpanel.sliders.Green.value() + this.rand);
-        // this.b = random(Cpanel.sliders.Blue.value() - this.rand, Cpanel.sliders.Blue.value() + this.rand);
-        this.reproduction = Cpanel.Reproduction;
-        this.opacity = Cpanel.Clarity;
-        this.wind = Cpanel.Wind;
-        this.gravity = -Cpanel.Gravity;
-        this.splatter = (this.radius / 40) * Cpanel.Splatter;
     }
+    this.strokeWeight = Cpanel.Outline;
+}
+Bubble.prototype.display = function () {
 
-    this.display = function () {
-this.x += random(-this.splatter, this.splatter) + this.wind;
-this.y += random(-this.splatter, this.splatter) - this.gravity;
-        stroke(0, this.opacity)
-        strokeWeight(this.strokeWeight * (this.radius / 200));
-        fill(this.r, this.g, this.b, this.opacity);
-        switch (Cpanel.Shape) {
-            case 'Circle':
-                ellipse(this.x, this.y, this.radius, this.radius);
-                break;
-            case 'Square':
-                rect(this.x, this.y, this.radius, this.radius);
-                break;
-        }
+    this.x += random(-this.splatter, this.splatter) + this.wind;
+    this.y += random(-this.splatter, this.splatter) - this.gravity;
+    stroke(0, this.opacity)
+    strokeWeight(this.strokeWeight * (this.radius / 200));
+    fill(this.r, this.g, this.b, this.opacity);
+    switch (Cpanel.Shape) {
+        case 'Circle':
+            ellipse(this.x, this.y, this.radius, this.radius);
+            break;
+        case 'Square':
+            rectMode(CENTER);
+            rect(this.x, this.y, this.radius, this.radius);
+            break;
     }
-
-    this.move = function () {
-        
-        
-    }
-    this.smaller = function () {
-        if (this.radius > 0) {
-            this.radius *= this.reproduction;
-        }
-    }
+}
+Bubble.prototype.randomiseColours = function () {
+    this.r = constrain(this.r + random(-this.rand, this.rand), 0, 255);
+    this.g = constrain(this.g + random(-this.rand, this.rand), 0, 255);
+    this.b = constrain(this.b + random(-this.rand, this.rand), 0, 255);
+}
+Bubble.prototype.smaller = function () {
+    this.radius *= this.reproduction;
 }

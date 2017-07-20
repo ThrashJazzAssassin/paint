@@ -1,70 +1,41 @@
 var Cpanel = {
-    Colour: [100, 100, 100],
+    Colour: [200, 200, 200],
     Randomness: 10,
     Radius: 40,
     Wind: 0,
     Gravity: 0,
     Reproduction: 0.9,
     Clarity: 200,
-    Splatter: 20,
+    Splatter: 0,
     Outline: 0,
+    Autodraw: 0,
     Fade: false,
     Shape: 'Circle',
-    Autodraw: 0,
+
+    Create: function () {
+        gui = new dat.GUI();
+        gui.remember(Cpanel);
+        gui.addColor(Cpanel, 'Colour');
+        gui.add(Cpanel, "Autodraw");
+        gui.add(Cpanel, "Randomness", 1, 40);
+        gui.add(Cpanel, "Radius", 1, 800);
+        gui.add(Cpanel, "Wind", -5, 5, 1);
+        gui.add(Cpanel, "Gravity", -5, 5, 1);
+        gui.add(Cpanel, "Reproduction", 0.9, 1.1, 0.01);
+        gui.add(Cpanel, "Clarity", 4, 255);
+        gui.add(Cpanel, "Splatter", -5, 5, 0.1);
+        gui.add(Cpanel, "Outline", 0, 20);
+        gui.add(Cpanel, 'Fade');
+        gui.add(Cpanel, 'Shape', ['Circle', 'Square']);
+        gui.add(Cpanel, 'Export');
+        gui.add(Cpanel, 'Clear');
+    },
+
     Export: function () {
         saveCanvas()
     },
     Clear: function () {
         bubbles = [];
         background(0);
-    },
-
-    variables: [{
-            name: "Autodraw",
-            min: 0,
-            max: 20,
-            def: 0
-        }, {
-            name: "Randomness",
-            min: 1,
-            max: 40,
-            def: 10
-        }, {
-            name: "Radius",
-            min: 10,
-            max: 200,
-            def: 20
-        }, {
-            name: "Wind",
-            min: -5,
-            max: 5,
-            def: 0
-        }, {
-            name: "Gravity",
-            min: -5,
-            max: 5,
-            def: 0
-        }, {
-            name: "Reproduction",
-            min: 0.9,
-            max: 1.01,
-            def: 0
-        }, {
-            name: "Clarity",
-            min: 4,
-            max: 255,
-            def: 200
-        },
-        {
-            name: "Splatter",
-            min: 0,
-            max: 40,
-            def: 10
-        }, {
-            name: "Outline",
-            min: 0,
-            max: 20,
-            def: 0
-        }
-    ],
+    }
 }
