@@ -16,7 +16,7 @@ var Cpanel = {
         gui = new dat.GUI();
         gui.remember(Cpanel);
         gui.addColor(Cpanel, 'Colour');
-        gui.add(Cpanel, "Autodraw");
+        gui.add(Cpanel, "Autodraw", 0);
         gui.add(Cpanel, "Randomness", 1, 40);
         gui.add(Cpanel, "Radius", 1, 800);
         gui.add(Cpanel, "Wind", -5, 5, 1);
