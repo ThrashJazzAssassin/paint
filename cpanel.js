@@ -12,6 +12,9 @@ var Cpanel = {
     Autodraw: 1,
     Fade: false,
     Shape: 'Circle',
+    ReCenter: function () {
+        autoBubble.set(width / 2, height / 2);
+    },
 
     Create: function () {
         gui = new dat.GUI();
@@ -30,6 +33,7 @@ var Cpanel = {
         gui.add(Cpanel, "Outline", 0, 20, 0.5);
         gui.add(Cpanel, 'Fade');
         gui.add(Cpanel, 'Shape', ['Circle', 'Square', 'Hexagon']);
+        gui.add(Cpanel, 'ReCenter');
         gui.add(Cpanel, 'Export');
         gui.add(Cpanel, 'Clear');
     },
