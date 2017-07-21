@@ -1,5 +1,6 @@
-// TODO: Undo, colour randomness,  import, other shapes, Use vectors, autodraw, rotation
+// TODO: Undo, import, other shapes, rotation, rainbows(oscillating pallete)
 var bubbles = [];
+var rainbow = 0;
 
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight);
@@ -35,32 +36,39 @@ function mouseMoved() {
 }
 
 function draw() {
+    rainbow += 1;
+    if (rainbow > 360) {
+        rainbow = 0;
+    }
+
     if (Cpanel.Fade) {
         background(0, 4);
     }
     if (Cpanel.Autodraw) {
-        speed.setMag(Cpanel.Autodraw);
+        speed.setMag(Cpanel.Autodraw ** 2);
         if (autoBubble.x < 0 || autoBubble.x > width) {
             speed.x *= -1;
         }
         if (autoBubble.y < 0 || autoBubble.y > height) {
             speed.y *= -1;
         }
-        autoBubble.add(speed);
+        if (Cpanel.Autodraw > 1) {
+            autoBubble.add(speed);
+        }
         bubbles.push(new Bubble(autoBubble.x, autoBubble.y));
     }
     for (i = 0; i < bubbles.length; i++) {
-        bubbles[i].randomiseColours();
+        if(Cpanel.Randomness<0) {
+        bubbles[i].randomiseColours();};
         bubbles[i].updateVars();
         bubbles[i].display();
-        // bubbles[i].move();
         bubbles[i].smaller();
-        if (bubbles[i].radius < 1 || 
-            bubbles[i].radius > width * 2 || 
-            bubbles[i].x + bubbles[i].radius/2 < 0 || 
-            bubbles[i].x > width + bubbles[i].radius/2 || 
-            bubbles[i].y < 0 - bubbles[i].radius/2 || 
-            bubbles[i].y > height + bubbles[i].radius/2) {
+        if (bubbles[i].radius < 1 ||
+            bubbles[i].radius > width * 2 ||
+            bubbles[i].x + bubbles[i].radius / 2 < 0 ||
+            bubbles[i].x > width + bubbles[i].radius / 2 ||
+            bubbles[i].y < 0 - bubbles[i].radius / 2 ||
+            bubbles[i].y > height + bubbles[i].radius / 2) {
             bubbles.splice(i, 1);
         }
     }
