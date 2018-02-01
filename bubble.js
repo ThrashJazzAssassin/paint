@@ -8,7 +8,7 @@ function Bubble(x, y, radius, r, g, b) {
     this.hue = rainbow + random(-this.rand, this.rand)/2;
     this.radius = Cpanel.Radius;
     this.strokeWeight = Cpanel.Outline;
-    this.splatter = Cpanel.Splatter ** 2;
+    this.splatter = pow(Cpanel.Splatter, 2);
     this.shape = Cpanel.Shape;
 }
 Bubble.prototype.updateVars = function () {
@@ -19,18 +19,18 @@ Bubble.prototype.updateVars = function () {
     this.gravity = -Cpanel.Gravity;
 
     if (Cpanel.Splatter > 0) {
-        this.splatter = (this.radius / 100) * Cpanel.Splatter ** 2;
+        this.splatter = (this.radius / 100) * pow(Cpanel.Splatter,2);
     } else {
-        this.splatter = Cpanel.Splatter ** 2;
+        this.splatter = pow(Cpanel.Splatter, 2);
 
     }
     this.strokeWeight = Cpanel.Outline;
-}
+};
 Bubble.prototype.display = function () {
 
     this.x += random(-this.splatter, this.splatter) + this.wind;
     this.y += random(-this.splatter, this.splatter) - this.gravity;
-    stroke(0, this.opacity)
+    stroke(0, this.opacity);
     strokeWeight(this.strokeWeight);
     if (Cpanel.Rainbow) {
         colorMode(HSB, 360, 100, 100, 255);
@@ -53,15 +53,15 @@ Bubble.prototype.display = function () {
             
             break;
     }
-}
+};
 Bubble.prototype.randomiseColours = function () {
     this.r = constrain(this.r + random(-this.rand, this.rand), 0, 255);
     this.g = constrain(this.g + random(-this.rand, this.rand), 0, 255);
     this.b = constrain(this.b + random(-this.rand, this.rand), 0, 255);
-}
+};
 Bubble.prototype.smaller = function () {
     this.radius *= this.reproduction;
-}
+};
 
 
 
@@ -75,5 +75,5 @@ Bubble.prototype.polygon = function (x, y, radius, npoints) {
     vertex(sx, sy);
   }
   endShape(CLOSE);
-}
+};
 

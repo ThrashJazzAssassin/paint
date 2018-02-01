@@ -45,7 +45,7 @@ function draw() {
         background(0, 4);
     }
     if (Cpanel.Autodraw) {
-        speed.setMag(Cpanel.Autodraw ** 2);
+        speed.setMag(pow(Cpanel.Autodraw, 2));
         if (autoBubble.x < 0 || autoBubble.x > width) {
             speed.x *= -1;
         }
@@ -58,8 +58,9 @@ function draw() {
         bubbles.push(new Bubble(autoBubble.x, autoBubble.y));
     }
     for (i = 0; i < bubbles.length; i++) {
-        if(Cpanel.Randomness<0) {
-        bubbles[i].randomiseColours();};
+        if (Cpanel.Randomness < 0) {
+            bubbles[i].randomiseColours();
+        }
         bubbles[i].updateVars();
         bubbles[i].display();
         bubbles[i].smaller();

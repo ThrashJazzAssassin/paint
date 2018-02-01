@@ -7,7 +7,7 @@ var Cpanel = {
     Gravity: 0,
     Reproduction: 0.9,
     Clarity: 100,
-    Splatter: -5,
+    Splatter: 5,
     Outline: 0,
     Autodraw: 1,
     Fade: false,
@@ -29,7 +29,7 @@ var Cpanel = {
         gui.add(Cpanel, "Gravity", -5, 5, 1);
         gui.add(Cpanel, "Reproduction", 0.9, 1.1, 0.01);
         gui.add(Cpanel, "Clarity", 4, 255);
-        gui.add(Cpanel, "Splatter", -5, 5, 0.1);
+        gui.add(Cpanel, "Splatter", -15, 15, 0.5);
         gui.add(Cpanel, "Outline", 0, 20, 0.5);
         gui.add(Cpanel, 'Fade');
         gui.add(Cpanel, 'Shape', ['Circle', 'Square', 'Hexagon']);
@@ -39,10 +39,10 @@ var Cpanel = {
     },
 
     Export: function () {
-        saveCanvas()
+        saveCanvas();
     },
     Clear: function () {
         bubbles = [];
         background(0);
     }
-}
+};
