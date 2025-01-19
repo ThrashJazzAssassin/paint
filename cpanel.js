@@ -23,7 +23,7 @@ var Cpanel = {
         gui.addColor(Cpanel, 'Colour');
         gui.add(Cpanel, 'Rainbow');
         
-        gui.add(Cpanel, "frameRate", 0, 120, 60);
+        gui.add(Cpanel, "frameRate", 0, 120, 1);
         gui.add(Cpanel, "Autodraw", 0, 10, 1);
         gui.add(Cpanel, "Randomness", -40, 40);
         gui.add(Cpanel, "Radius", 5, 800);
