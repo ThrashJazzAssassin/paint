@@ -1,5 +1,5 @@
 var Cpanel = {
-    frameRate: 60,
+    fr: 60,
     Colour: [80, 120, 200],
     Rainbow: false,
     Randomness: 10,
@@ -23,7 +23,7 @@ var Cpanel = {
         gui.addColor(Cpanel, 'Colour');
         gui.add(Cpanel, 'Rainbow');
         
-        gui.add(Cpanel, "frameRate", 0, 120, 1);
+        gui.add(Cpanel, "fr", 0, 120, 1);
         gui.add(Cpanel, "Autodraw", 0, 10, 1);
         gui.add(Cpanel, "Randomness", -40, 40);
         gui.add(Cpanel, "Radius", 5, 800);
