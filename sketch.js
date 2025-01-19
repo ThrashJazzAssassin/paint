@@ -1,6 +1,7 @@
 // TODO: Undo, import, other shapes, rotation, rainbows(oscillating pallete)
 var bubbles = [];
 var rainbow = 0;
+var frameRate = 1;
 
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight);
@@ -8,6 +9,7 @@ function setup() {
     autoBubble = createVector(width / 2, height / 2);
     speed = createVector(1, 1);
     Cpanel.Create();
+    frameRate(frameRate);
 }
 
 function windowResized() {
