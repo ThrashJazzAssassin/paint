@@ -1,4 +1,4 @@
-function Bubble(x, y, radius, r, g, b) {
+function Bubble(x, y) {
     this.x = x;
     this.y = y;
     this.rand = Cpanel.Randomness*4;
@@ -48,9 +48,11 @@ Bubble.prototype.display = function () {
             rectMode(CENTER);
             rect(this.x, this.y, this.radius, this.radius);
             break;
+        case 'Triangle':
+            this.polygon(this.x, this.y, this.radius, 3);
+            break;
         case 'Hexagon':
             this.polygon(this.x, this.y, this.radius, 6);
-            
             break;
     }
 };
@@ -63,17 +65,14 @@ Bubble.prototype.smaller = function () {
     this.radius *= this.reproduction;
 };
 
-
-
-
 Bubble.prototype.polygon = function (x, y, radius, npoints) {
-  var angle = TWO_PI / npoints;
-  beginShape();
-  for (var a = 0; a < TWO_PI; a += angle) {
-    var sx = x + cos(a) * radius;
-    var sy = y + sin(a) * radius;
-    vertex(sx, sy);
-  }
-  endShape(CLOSE);
+    var angle = TWO_PI / npoints;
+    beginShape();
+    for (var a = 0; a < TWO_PI; a += angle) {
+        var sx = x + cos(a) * radius;
+        var sy = y + sin(a) * radius;
+        vertex(sx, sy);
+    }
+    endShape(CLOSE);
 };
 
