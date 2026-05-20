@@ -34,7 +34,7 @@ var Cpanel = {
         gui.add(Cpanel, "Splatter", -15, 15, 0.5);
         gui.add(Cpanel, "Outline", 0, 20, 0.5);
         gui.add(Cpanel, 'Fade');
-        gui.add(Cpanel, 'Shape', ['Circle', 'Square', 'Hexagon']);
+        gui.add(Cpanel, 'Shape', ['Circle', 'Square', 'Triangle', 'Hexagon']);
         gui.add(Cpanel, 'ReCenter');
         gui.add(Cpanel, 'Export');
         gui.add(Cpanel, 'Clear');

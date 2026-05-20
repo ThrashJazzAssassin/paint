@@ -1,7 +1,7 @@
 // TODO: Undo, import, other shapes, rotation, rainbows(oscillating pallete)
 var bubbles = [];
 var rainbow = 0;
-var fr = 60;
+var autoBubble, speed;
 
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight);
@@ -33,11 +33,13 @@ function mouseDragged() {
 function mouseMoved() {
     if (mouseX > 240) {
         cursor(CROSS);
+    } else {
+        cursor(ARROW);
     }
 }
 
 function draw() {
-    frameRate(fr);
+    frameRate(Cpanel.fr);
     rainbow += 1;
     if (rainbow > 360) {
         rainbow = 0;
@@ -59,7 +61,7 @@ function draw() {
         }
         bubbles.push(new Bubble(autoBubble.x, autoBubble.y));
     }
-    for (i = 0; i < bubbles.length; i++) {
+    for (var i = 0; i < bubbles.length; i++) {
         if (Cpanel.Randomness < 0) {
             bubbles[i].randomiseColours();
         }
